@@ -20,9 +20,11 @@
                 </div>
                 <div class="options">
                     <label>Shipping</label><br><br>
-                    <input class = "shipping" id = "standard" type="radio" name="shipping" value="standard">Standard</input><br>
-                    <input class = "shipping" id = "priority" type="radio" name="shipping" value="Priority">Priority</input><br>
-                    <input class = "shipping" id = "express" type="radio" name="shipping" value="Express">Express</input><br>
+                    <select id = "shipping" name = "">
+                        <option value="standard"></option>
+                        <option value="priority"></option>
+                        <option value="express"></option>
+                    </select>
                 </div>
                 <div class="options">
                     <label>City</label>
@@ -40,12 +42,13 @@
         function calculate(){
 
         const doc = document;
-        let price = doc.querySelector("#price");
-        let shippingType = doc.querySelector(".shipping");
+        let price = Number(doc.querySelector("#price").innerHTML);
+        let shippingType = doc.querySelector("#shipping");
         let shippingLocation = doc.querySelector("#city");
         let totalCost;
         let shippingCost;
-        let answer = doc.querySelector("#answer")
+        let answer = doc.querySelector("#answer");
+        console.log(answer);
         let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine'];
         let tax8250 = ['Rockford', 'Aurora', 'Waukegan'];
         let tax8750 = ['Joliet', 'Bloomington'];
@@ -93,10 +96,11 @@
         else if(tax10750.includes(shippingLocation)){
             totalCost = (price * 1.0625) + (shippingCost * 1.1075);
         }
-        else{
+        else if(tax7500.includes(shippingLocation)){
             totalCost = (price * 1.0625) + (shippingCost * 1.075);
         }
-        answer = totalCost;
+
+        answer.innerHTML = totalCost;
 
         }
     </script>
