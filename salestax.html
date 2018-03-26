@@ -21,9 +21,9 @@
                 <div class="options">
                     <label>Shipping</label><br><br>
                     <select id = "shipping" name = "">
-                        <option value="standard"></option>
-                        <option value="priority"></option>
-                        <option value="express"></option>
+                        <option value="standard">standard</option>
+                        <option value="priority">priority</option>
+                        <option value="express">express</option>
                     </select>
                 </div>
                 <div class="options">
@@ -42,9 +42,9 @@
         function calculate(){
 
         const doc = document;
-        let price = Number(doc.querySelector("#price").innerHTML);
-        let shippingType = doc.querySelector("#shipping");
-        let shippingLocation = doc.querySelector("#city");
+        let price = Number(doc.querySelector("#price").value);
+        let shippingType = doc.querySelector("#shipping").value;
+        let shippingLocation = doc.querySelector("#city").value;
         let totalCost;
         let shippingCost;
         let answer = doc.querySelector("#answer");
@@ -59,6 +59,7 @@
         let tax10250 = ['Elgin', 'Chicago', 'Skokie'];
         let tax10750 = ['Cicero'];
         let tax7500 = ['Naperville'];
+        new Date(year, month [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
 
         if(shippingType = "#standard"){
             shippingCost = 2.99;
