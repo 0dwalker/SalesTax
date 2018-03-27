@@ -13,7 +13,6 @@
                 <h4>price of goods and services changes based on the city or county purchased.</h4>
             </header>
             <div id="user-input">
-                <p>You will need a few inputs to make this work properly.  You can delete this comment once you feel you know how many variables you need.</p>
                 <div class="options">
                     <label>Price</label>
                     <input id = "price" type="" name="" value=""></input>
@@ -48,7 +47,6 @@
         let totalCost;
         let shippingCost;
         let answer = doc.querySelector("#answer");
-        console.log(answer);
         let tax10000 = ['Peoria','Arlington Heights','Schaumburg','Evanston','Palatine'];
         let tax8250 = ['Rockford', 'Aurora', 'Waukegan'];
         let tax8750 = ['Joliet', 'Bloomington'];
@@ -59,16 +57,19 @@
         let tax10250 = ['Elgin', 'Chicago', 'Skokie'];
         let tax10750 = ['Cicero'];
         let tax7500 = ['Naperville'];
-        new Date(year, month [, day [, hours [, minutes [, seconds [, milliseconds]]]]]);
-
+        let date = new Date();
+        let now = date.getTime();
         if(shippingType = "#standard"){
             shippingCost = 2.99;
+            now = now + 432000000;
         }
         else if(shippingType = "#priority"){
             shippingCost = 4.99;
+            now = now + 259200000;
         }
         else{
             shippingCost = 8.99;
+            now = now + 172800000;
         }
         if(tax10000.includes(shippingLocation)){
             totalCost = (price * 1.0625) + (shippingCost * 1.1);
@@ -101,7 +102,9 @@
             totalCost = (price * 1.0625) + (shippingCost * 1.075);
         }
 
-        answer.innerHTML = totalCost;
+        date.setTime(now);
+
+        answer.innerHTML = "The final cost is " + totalCost + '. Your package will arrive at '+ date +'.';
 
         }
     </script>
