@@ -59,11 +59,12 @@
         let tax7500 = ['Naperville'];
         let date = new Date();
         let now = date.getTime();
-        if(shippingType = "#standard"){
+
+        if(shippingType == "standard"){
             shippingCost = 2.99;
             now = now + 432000000;
         }
-        else if(shippingType = "#priority"){
+        else if(shippingType == "priority"){
             shippingCost = 4.99;
             now = now + 259200000;
         }
@@ -101,8 +102,9 @@
         else if(tax7500.includes(shippingLocation)){
             totalCost = (price * 1.0625) + (shippingCost * 1.075);
         }
-
+        totalCost = Math.floor(100*totalCost)/100;
         date.setTime(now);
+
 
         answer.innerHTML = "The final cost is " + totalCost + '. Your package will arrive at '+ date +'.';
 
